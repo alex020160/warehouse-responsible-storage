@@ -1,0 +1,202 @@
+{
+  "clients": [
+    {
+      "client_id": "C001",
+      "name": "ООО Север",
+      "contact_info": "warehouse@example.org"
+    }
+  ],
+  "products": [
+    {
+      "product_id": "P001",
+      "name": "Коробки с канцелярией",
+      "sku": "DRY-001",
+      "storage_conditions": "сухое",
+      "allowed_zone": "A"
+    },
+    {
+      "product_id": "P002",
+      "name": "Бумажные пакеты",
+      "sku": "DRY-002",
+      "storage_conditions": "сухое",
+      "allowed_zone": null
+    },
+    {
+      "product_id": "P003",
+      "name": "Охлаждённая продукция",
+      "sku": "COLD-001",
+      "storage_conditions": "охлаждение",
+      "allowed_zone": "B"
+    },
+    {
+      "product_id": "P004",
+      "name": "Замороженная продукция",
+      "sku": "FROZEN-001",
+      "storage_conditions": "заморозка",
+      "allowed_zone": "C"
+    }
+  ],
+  "deliveries": [
+    {
+      "delivery_id": "D001",
+      "client_id": "C001",
+      "expected_date": "2026-10-28",
+      "actual_date": null,
+      "status": "ожидается"
+    },
+    {
+      "delivery_id": "D002",
+      "client_id": "C001",
+      "expected_date": "2026-10-28",
+      "actual_date": null,
+      "status": "ожидается"
+    },
+    {
+      "delivery_id": "D003",
+      "client_id": "C001",
+      "expected_date": "2026-10-28",
+      "actual_date": null,
+      "status": "ожидается"
+    },
+    {
+      "delivery_id": "D004",
+      "client_id": "C001",
+      "expected_date": "2026-10-28",
+      "actual_date": null,
+      "status": "ожидается"
+    },
+    {
+      "delivery_id": "D005",
+      "client_id": "C001",
+      "expected_date": "2026-10-28",
+      "actual_date": null,
+      "status": "ожидается"
+    },
+    {
+      "delivery_id": "D006",
+      "client_id": "C001",
+      "expected_date": "2026-10-27",
+      "actual_date": "2026-10-27",
+      "status": "размещена"
+    },
+    {
+      "delivery_id": "D007",
+      "client_id": "C001",
+      "expected_date": "2026-10-27",
+      "actual_date": "2026-10-27",
+      "status": "требует согласования"
+    }
+  ],
+  "delivery_items": [
+    {
+      "delivery_item_id": "I001",
+      "delivery_id": "D001",
+      "product_id": "P001",
+      "expected_quantity": 10,
+      "actual_quantity": null
+    },
+    {
+      "delivery_item_id": "I002",
+      "delivery_id": "D002",
+      "product_id": "P001",
+      "expected_quantity": 10,
+      "actual_quantity": null
+    },
+    {
+      "delivery_item_id": "I003",
+      "delivery_id": "D003",
+      "product_id": "P001",
+      "expected_quantity": 10,
+      "actual_quantity": null
+    },
+    {
+      "delivery_item_id": "I004",
+      "delivery_id": "D004",
+      "product_id": "P001",
+      "expected_quantity": 10,
+      "actual_quantity": null
+    },
+    {
+      "delivery_item_id": "I005",
+      "delivery_id": "D005",
+      "product_id": "P004",
+      "expected_quantity": 5,
+      "actual_quantity": null
+    },
+    {
+      "delivery_item_id": "I006",
+      "delivery_id": "D006",
+      "product_id": "P001",
+      "expected_quantity": 2,
+      "actual_quantity": 2
+    },
+    {
+      "delivery_item_id": "I007",
+      "delivery_id": "D007",
+      "product_id": "P002",
+      "expected_quantity": 4,
+      "actual_quantity": 3
+    }
+  ],
+  "batches": [
+    {
+      "batch_id": "B001",
+      "delivery_item_id": "I006",
+      "quantity": 2,
+      "batch_number": "ARCHIVE-001",
+      "expiration_date": null
+    }
+  ],
+  "discrepancies": [
+    {
+      "discrepancy_id": "R001",
+      "delivery_item_id": "I007",
+      "discrepancy_type": "недостача",
+      "quantity_difference": -1,
+      "description": "Ожидается согласование с клиентом."
+    }
+  ],
+  "storage_cells": [
+    {
+      "cell_id": "S001",
+      "zone": "A",
+      "capacity": 12,
+      "available_capacity": 10,
+      "storage_conditions": "сухое",
+      "status": "доступна"
+    },
+    {
+      "cell_id": "S002",
+      "zone": "A",
+      "capacity": 20,
+      "available_capacity": 20,
+      "storage_conditions": "сухое",
+      "status": "доступна"
+    },
+    {
+      "cell_id": "S003",
+      "zone": "A",
+      "capacity": 100,
+      "available_capacity": 100,
+      "storage_conditions": "сухое",
+      "status": "заблокирована"
+    },
+    {
+      "cell_id": "S004",
+      "zone": "B",
+      "capacity": 15,
+      "available_capacity": 15,
+      "storage_conditions": "охлаждение",
+      "status": "доступна"
+    }
+  ],
+  "placements": [
+    {
+      "placement_id": "PL001",
+      "batch_id": "B001",
+      "cell_id": "S001",
+      "quantity": 2,
+      "placement_date": "2026-10-27"
+    }
+  ]
+}
