@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" agent="draw.io" version="29.0.0">
   <diagram id="Логическая модель данных" name="Логическая модель данных">
-    <mxGraphModel dx="1680" dy="1530" grid="1" gridSize="10" page="0" pageScale="1" pageWidth="1680" pageHeight="1530" math="0" shadow="0">
+    <mxGraphModel dx="1680" dy="1530" grid="1" gridSize="10" page="0" pageScale="1" pageWidth="1680" pageHeight="1700" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -82,8 +82,8 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="note" value="Каждая дочерняя запись относится ровно к одному родителю. У Delivery — 1..N позиций; у остальных родителей — 0..N дочерних записей.&#10;M:N Delivery–Product разрешена через DeliveryItem; пара (delivery_id, product_id) уникальна.&#10;Product 1:N Batch выводится через DeliveryItem. Товар в Batch не дублируется; quantity — принятое количество партии. Модель в 3НФ." style="text;strokeColor=none;fillColor=none;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=17;fontColor=#111111;strokeColor=#222222;fillColor=#ffffff;spacing=10;fontSize=18;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="50" y="1370" width="1500" height="120" as="geometry" />
+        <mxCell id="note" value="Каждая дочерняя запись относится ровно к одному родителю. У Delivery — 1..N позиций; у остальных родителей — 0..N дочерних записей.&#10;M:N Delivery–Product разрешена через DeliveryItem; пара (delivery_id, product_id) уникальна.&#10;Product 1:N Batch выводится через DeliveryItem. Товар в Batch не дублируется; quantity — принятое количество партии. Модель в 3НФ.&#10;&#10;Ограничения предметной области:&#10;Сумма Batch.quantity по одной DeliveryItem ≤ DeliveryItem.actual_quantity.&#10;Сумма Placement.quantity по одной Batch ≤ Batch.quantity.&#10;0 ≤ StorageCell.available_capacity ≤ StorageCell.capacity.&#10;Product.allowed_zone = null означает отсутствие ограничения зоны." style="text;strokeColor=none;fillColor=none;whiteSpace=wrap;html=0;fontFamily=Arial;fontSize=17;fontColor=#111111;strokeColor=#222222;fillColor=#ffffff;spacing=10;fontSize=18;align=left;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1370" width="1500" height="280" as="geometry"/>
         </mxCell>
       </root>
     </mxGraphModel>
