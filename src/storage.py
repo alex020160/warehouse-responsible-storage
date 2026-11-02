@@ -155,6 +155,13 @@ def validate_data(data):
         if (item["actual_quantity"] is None) != (delivery["actual_date"] is None):
             raise ValueError("Фактические дата и количество должны заполняться вместе.")
     for delivery in data["deliveries"]:
+        if delivery["status"] not in (
+            "ожидается", "поступила", "проверена", "требует согласования",
+            "принята", "размещена",
+        ):
+            raise ValueError("Неизвестный статус поставки.")
+        if (delivery["status"] == "ожидается") != (delivery["actual_date"] is None):
+            raise ValueError("Статус поставки не согласован с датой поступления.")
         if not any(
             item["delivery_id"] == delivery["delivery_id"]
             for item in data["delivery_items"]
@@ -185,6 +192,8 @@ def validate_data(data):
         if placed > batch["quantity"]:
             raise ValueError("Размещено больше принятого количества.")
     for cell in data["storage_cells"]:
+        if cell["status"] not in ("доступна", "заблокирована"):
+            raise ValueError("Неизвестный статус складской ячейки.")
         occupied = sum(
             p["quantity"] for p in data["placements"] if p["cell_id"] == cell["cell_id"]
         )
@@ -195,6 +204,9 @@ def validate_data(data):
         item = find_record(
             data, "delivery_items", "delivery_item_id", batch["delivery_item_id"]
         )
+        delivery = find_record(data, "deliveries", "delivery_id", item["delivery_id"])
+        if delivery["actual_date"] is None or placement["placement_date"] < delivery["actual_date"]:
+            raise ValueError("Размещение не может предшествовать поступлению.")
         product = find_record(data, "products", "product_id", item["product_id"])
         cell = find_record(data, "storage_cells", "cell_id", placement["cell_id"])
         if product["storage_conditions"] != cell["storage_conditions"]:
@@ -204,7 +216,60 @@ def validate_data(data):
             and product["allowed_zone"] != cell["zone"]
         ):
             raise ValueError("Зона размещения не подходит товару.")
+    validate_delivery_states(data)
+    validate_discrepancy_values(data)
     return data
+
+
+def validate_delivery_states(data):
+    """Партии и размещения должны соответствовать этапу обработки поставки."""
+    for delivery in data["deliveries"]:
+        item_ids = {
+            item["delivery_item_id"] for item in data["delivery_items"]
+            if item["delivery_id"] == delivery["delivery_id"]
+        }
+        batches = [b for b in data["batches"] if b["delivery_item_id"] in item_ids]
+        deviations = [d for d in data["discrepancies"] if d["delivery_item_id"] in item_ids]
+        accepted = delivery["status"] in ("принята", "размещена")
+        if accepted != bool(batches):
+            raise ValueError("Наличие принятых партий не согласовано со статусом поставки.")
+        if delivery["status"] in ("ожидается", "поступила", "проверена") and deviations:
+            raise ValueError("Расхождения не согласованы со статусом поставки.")
+        if delivery["status"] == "требует согласования" and not deviations:
+            raise ValueError("Для согласования должны быть зарегистрированы расхождения.")
+        if accepted:
+            fully_placed = all(
+                sum(p["quantity"] for p in data["placements"] if p["batch_id"] == b["batch_id"])
+                == b["quantity"] for b in batches
+            )
+            if (delivery["status"] == "размещена") != fully_placed:
+                raise ValueError("Статус поставки не согласован с размещением принятых партий.")
+
+
+def validate_discrepancy_values(data):
+    """Проверка вида, знака и величины отклонения по фактической позиции."""
+    for deviation in data["discrepancies"]:
+        item = find_record(
+            data, "delivery_items", "delivery_item_id", deviation["delivery_item_id"]
+        )
+        actual = item["actual_quantity"]
+        if actual is None:
+            raise ValueError("Расхождение требует сохранённого фактического поступления.")
+        kind = deviation["discrepancy_type"]
+        if kind == "качество":
+            if deviation["quantity_difference"] != 0 or not deviation["description"].strip():
+                raise ValueError("Качественное отклонение требует описания и нулевой разности.")
+        elif kind in ("недостача", "излишек", "неожиданный товар"):
+            difference = actual - item["expected_quantity"]
+            expected_kind = (
+                "неожиданный товар" if item["expected_quantity"] == 0 and actual > 0
+                else "недостача" if difference < 0
+                else "излишек" if difference > 0 else None
+            )
+            if kind != expected_kind or deviation["quantity_difference"] != difference:
+                raise ValueError("Вид и разность расхождения не соответствуют позиции поставки.")
+        else:
+            raise ValueError("Неизвестный тип расхождения.")
 
 
 def load_data(path):
