@@ -133,6 +133,10 @@ def validate_data(data):
                     raise ValueError(f"{collection}.{name}: требуется непустая строка.")
                 if name.endswith("_date"):
                     require_date(value)
+    for collection in ("products", "storage_cells"):
+        for record in data[collection]:
+            if record["storage_conditions"] not in ("сухое", "охлаждение", "заморозка"):
+                raise ValueError("Неизвестный код условий хранения.")
     links = (
         ("deliveries", "client_id", "clients", "client_id"),
         ("delivery_items", "delivery_id", "deliveries", "delivery_id"),
@@ -237,6 +241,20 @@ def validate_delivery_states(data):
             raise ValueError("Расхождения не согласованы со статусом поставки.")
         if delivery["status"] == "требует согласования" and not deviations:
             raise ValueError("Для согласования должны быть зарегистрированы расхождения.")
+        if delivery["status"] in ("проверена", "требует согласования", "принята", "размещена"):
+            for item in data["delivery_items"]:
+                if item["delivery_item_id"] not in item_ids:
+                    continue
+                difference = item["actual_quantity"] - item["expected_quantity"]
+                quantitative = [
+                    d for d in deviations
+                    if d["delivery_item_id"] == item["delivery_item_id"]
+                    and d["discrepancy_type"] != "качество"
+                ]
+                if bool(difference) != bool(quantitative) or len(quantitative) > 1:
+                    raise ValueError("Количественные расхождения должны быть зарегистрированы полностью.")
+                if delivery["status"] == "проверена" and difference:
+                    raise ValueError("Проверенная поставка без расхождений не должна иметь отклонений количества.")
         if accepted:
             fully_placed = all(
                 sum(p["quantity"] for p in data["placements"] if p["batch_id"] == b["batch_id"])
