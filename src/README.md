@@ -268,3 +268,37 @@ Copy-Item -LiteralPath data/warehouse.backup.json -Destination data/warehouse.js
 На блок-схемах парные соединители K01, K02 и далее обозначают продолжение
 одного потока в другом месте схемы. Входы в символы расположены слева/сверху,
 выходы — справа/снизу; пары границ циклов C1–C5 сохранены.
+
+## Резервная копия в Linux и macOS
+
+Рабочий каталог для всех команд этого примера — `src/` (из корня: `cd src`).
+PowerShell: `Copy-Item -LiteralPath data/warehouse.json -Destination data/warehouse.backup.json`.
+Эквивалент Linux/macOS: `cp data/warehouse.json data/warehouse.backup.json`.
+Восстановление после выхода из программы: PowerShell —
+`Copy-Item -LiteralPath data/warehouse.backup.json -Destination data/warehouse.json -Force`;
+Linux/macOS — `cp data/warehouse.backup.json data/warehouse.json`.
+Не заменяйте исходную резервную копию уже изменёнными данными.
+
+## Сохраняемые производные значения
+
+`StorageCell.available_capacity` производно: `capacity` минус сумма
+`Placement.quantity` данной ячейки. Оно сохраняется для подбора по актуальному
+остатку. `Discrepancy.quantity_difference` для недостачи и излишка производно
+от `DeliveryItem.actual_quantity - expected_quantity` и сохраняет явную величину
+зарегистрированного отклонения. Для качественного отклонения действуют
+прежние правила: разность 0 и непустое описание.
+
+`validate_data()` проверяет эти равенства при загрузке и перед атомарной
+записью. Все пять изменяющих операций `workflow.py` также вызывают его
+перед изменением и после успешного формирования результата. Консоль
+работает с отдельной копией состояния и принимает её после успешного сохранения.
+Эта общая проверка не входит в оценки времени двух основных алгоритмов.
+
+## Запуск из IntelliJ IDEA Community 2024.2
+
+Выбран способ через встроенный Terminal: установить Python 3.13, проверить
+`python --version`, перейти в `src/` и выполнить `python main.py`. На Windows
+при наличии Python Launcher можно выполнить `py -3.13 main.py`. Отдельная
+Run-конфигурация и Python SDK в IDEA для этого способа не требуются.
+Для редактирования Python в локальной IDEA обнаружен плагин Python Community
+Edition 242.23339.11 (`PythonCore`); его диапазон — сборки 242.23339–242.*.
