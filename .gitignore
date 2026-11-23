@@ -4,3 +4,11 @@ __pycache__/
 *.drawio.bkp
 src/data/*.backup.json
 vcs/git_log.txt
+
+*.class
+target/
+build/
+out/
+src/java/lib/
+src/java/data/*.backup.json
+src/java/data/warehouse-*.tmp

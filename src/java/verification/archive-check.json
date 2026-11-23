@@ -1,0 +1,29 @@
+{
+  "build": true,
+  "gson_download": true,
+  "self_test_41": true,
+  "invalid_save_preserved": true,
+  "console": true,
+  "source_hashes": {
+    "src\\test\\java\\ru\\mirea\\warehouse\\VerificationMain.java": "3f63b486ee447253daf33fe65da2d62e44af8dee0928fda6d96edf1cb42bda49",
+    "src\\main\\java\\ru\\mirea\\warehouse\\application\\DeliveryComparator.java": "84a243c007924fe8077451c862ca8151cf91d547793d06c3c92f194a52ecad61",
+    "src\\main\\java\\ru\\mirea\\warehouse\\application\\ReceivingService.java": "85f08572da4083402c588da934ad5bd9c45723d912db57bf2e7926a87332ee4b",
+    "src\\main\\java\\ru\\mirea\\warehouse\\application\\StorageSelector.java": "5b991381519209f6ea4bedfad590f42a1a3fde69aae8cca90736a4f86ab6d90e",
+    "src\\main\\java\\ru\\mirea\\warehouse\\cli\\ConsoleApp.java": "1ea4c009faabf8369f0fc97f19febc964feb762b7c24a99f3977b590d8a5ce32",
+    "src\\main\\java\\ru\\mirea\\warehouse\\domain\\Batch.java": "ba3fa089799a3840660a3a0e19e1b49e70e58f54ec89c8aaafa10ac37efc7d45",
+    "src\\main\\java\\ru\\mirea\\warehouse\\domain\\Client.java": "6d004a17f9341e000495e422c14da5b804f037b9f93fca7391036bacac28fc1d",
+    "src\\main\\java\\ru\\mirea\\warehouse\\domain\\Delivery.java": "4eb1d4b03ec9c1960409a393811978ff70dd6f74974ec2f1c57b8a05bed3f40b",
+    "src\\main\\java\\ru\\mirea\\warehouse\\domain\\DeliveryItem.java": "caae0a92758c8efc2132cfa70b1f1c388824de1433b20d6b956b699a1644873a",
+    "src\\main\\java\\ru\\mirea\\warehouse\\domain\\Discrepancy.java": "95f8d028ed85c6e52ea5796b84c270274bb2b9fa6cbcfbd108011b8c1a5a47ec",
+    "src\\main\\java\\ru\\mirea\\warehouse\\domain\\Placement.java": "57720d1295885806c457a6b376ed5a8b354b4e9879fcb7877a3c566ea8ed8428",
+    "src\\main\\java\\ru\\mirea\\warehouse\\domain\\Product.java": "75de39d3a96ce5b8ee9ab2fc6308abdb1e13c14b83481efe0f8b5fc86bdab238",
+    "src\\main\\java\\ru\\mirea\\warehouse\\domain\\QualityDiscrepancy.java": "d0d213ffb439788f874b98760499fd726511be61bf0490a6c911a25de1e781ab",
+    "src\\main\\java\\ru\\mirea\\warehouse\\domain\\StorageCell.java": "6acf8437e02b527d75bf79a09cb674abe20f8919e4e0f583cc99789b01f419a6",
+    "src\\main\\java\\ru\\mirea\\warehouse\\domain\\Warehouse.java": "443e5cb4ec2c14f46f6caa8a685be4ee2444c9759120207772b246b3650e0b60",
+    "src\\main\\java\\ru\\mirea\\warehouse\\infrastructure\\IntegrityValidator.java": "4af35042f580720a1f088535c0d03150b9da82e8329b9c39227b40d35a533e35",
+    "src\\main\\java\\ru\\mirea\\warehouse\\infrastructure\\JsonWarehouseRepository.java": "8f865f1aafa6ca458b06e4c8ba079ee9c8b3e58b22b24e8dd96d02fb683ac0c8",
+    "src\\main\\java\\ru\\mirea\\warehouse\\rules\\ConditionsRule.java": "b9a4444c27712e8c652ea146d3bc67475c8d7280686ddc8b38ceae304ed3f1be",
+    "src\\main\\java\\ru\\mirea\\warehouse\\rules\\StorageRule.java": "eaa87049af29df9e34593514ab15df3783d9adc63d02556ee1dfa6a5cfa1fe0d",
+    "src\\main\\java\\ru\\mirea\\warehouse\\rules\\ZoneRule.java": "fd2ca36c2976e10808bfa2e83401bf5d574437190cb3f72ea820be05bbb7e3b6"
+  }
+}
