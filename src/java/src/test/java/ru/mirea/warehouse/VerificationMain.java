@@ -76,6 +76,20 @@ public final class VerificationMain {
     }
     private void selfTest(Path seed) throws Exception {
         Warehouse data=repository.load(seed);
+        // Review #1: preserve duplicate fields in raw strings, not in JsonObject.
+        String raw=repository.encode(data);
+        String capacity="\"capacity\": 20";
+        if (!raw.contains(capacity)) throw new AssertionError("Missing capacity fixture");
+        for (String invalid : List.of(
+                raw.replace(capacity,"\"capacity\": 999, \"capacity\": 20"),
+                raw.replace(capacity,"\"capacity\": 20, \"capacity\": 20"),
+                raw.replace(capacity,"\"cap\\u0061city\": 999, \"capacity\": 20"),
+                "{\"clients\": []," + raw.substring(1), raw + " {}", raw.substring(0,raw.length()-1))) {
+            boolean rejected=false;
+            try { repository.decode(invalid); } catch (RuntimeException ex) { rejected=true; }
+            if (!rejected) throw new AssertionError("Invalid or duplicate JSON was accepted");
+        }
+        if (!repository.encode(repository.decode(raw)).equals(raw)) throw new AssertionError("Valid JSON changed");
         DeliveryItem expected=new DeliveryItem(null,null,"P001",BigInteger.TEN,null);
         DeliveryItem actual=new DeliveryItem(null,null,"P001",null,BigInteger.valueOf(8));
         var result=new DeliveryComparator().compareDeliveryItems(List.of(expected),List.of(actual));
@@ -98,7 +112,7 @@ public final class VerificationMain {
             if(!rejected||!before.equals(Files.readString(file,StandardCharsets.UTF_8))) throw new AssertionError("Invalid save changed file");
             try(var files=Files.list(directory)) { if(files.count()!=1) throw new AssertionError("Temporary files leaked"); }
         } finally { Files.deleteIfExists(file);Files.deleteIfExists(directory); }
-        System.out.println("PASS: "+requests.size()+" Python/Java reference cases, JSON round trip, rejected save preserves file");
+        System.out.println("PASS: "+requests.size()+" Python/Java reference cases, JSON round trip, 6 raw JSON rejection cases, rejected save preserves file");
     }
     public static void main(String[] args) throws Exception {
         VerificationMain check=new VerificationMain();

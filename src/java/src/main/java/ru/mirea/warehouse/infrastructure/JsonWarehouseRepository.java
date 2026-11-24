@@ -1,12 +1,18 @@
 package ru.mirea.warehouse.infrastructure;
 
 import com.google.gson.*;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.time.LocalDate;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.HashSet;
+import java.util.Set;
 import ru.mirea.warehouse.domain.*;
 
 public final class JsonWarehouseRepository {
@@ -29,6 +35,28 @@ public final class JsonWarehouseRepository {
     public Gson getGson() { return gson; }
     public Warehouse decode(String text) {
         if (text.startsWith("\uFEFF")) throw new IllegalArgumentException("JSON должен быть UTF-8 без BOM.");
+        // JsonObject keeps only the last value: check names before building the tree.
+        try (JsonReader reader = new JsonReader(new StringReader(text))) {
+            reader.setStrictness(Strictness.STRICT);
+            Deque<Set<String>> objectFields = new ArrayDeque<>();
+            while (reader.peek() != JsonToken.END_DOCUMENT) {
+                switch (reader.peek()) {
+                    case BEGIN_OBJECT -> { reader.beginObject(); objectFields.push(new HashSet<>()); }
+                    case END_OBJECT -> { reader.endObject(); objectFields.pop(); }
+                    case BEGIN_ARRAY -> reader.beginArray();
+                    case END_ARRAY -> reader.endArray();
+                    case NAME -> {
+                        String name = reader.nextName();
+                        if (!objectFields.peek().add(name)) {
+                            throw new IllegalArgumentException("Повторяющееся поле JSON: " + name + " (" + reader.getPath() + ")");
+                        }
+                    }
+                    default -> reader.skipValue();
+                }
+            }
+        } catch (IOException ex) {
+            throw new IllegalArgumentException("Неверный JSON.", ex);
+        }
         JsonElement parsed = gson.fromJson(text, JsonElement.class);
         if (parsed == null || !parsed.isJsonObject()) throw new IllegalArgumentException("Ожидается объект JSON.");
         validator.validateDocument(parsed.getAsJsonObject());
