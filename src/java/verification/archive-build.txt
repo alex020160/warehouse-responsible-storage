@@ -1,3 +1,1 @@
-PASS: 41 Python/Java reference cases, JSON round trip, rejected save preserves file
-
-Console: 6 -> 0, JSON bytes unchanged.
+PASS: 41 Python/Java reference cases, JSON round trip, 6 raw JSON rejection cases, 15 rejected date calls preserve state, 2 valid date boundaries, rejected save preserves file

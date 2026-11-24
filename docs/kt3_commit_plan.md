@@ -1,66 +1,29 @@
-# Коммит документации и объединение КТ3
+# История и актуализация комплекта КТ3
 
-Рабочий каталог — корень репозитория. Команды ниже предназначены для
-Git Bash в терминале VS Code. Состояние описано на 24.11.2026.
+КТ3 объединена с main коммитом 0cad37e. Последующие итоги взаимного
+рецензирования фиксируются содержательным коммитом в main без повторного
+слияния рабочей ветки. История и подтверждения сохраняются.
 
-## Текущие группы изменений
-
-| Дата автора в текущей истории | SHA | Содержание |
-|---|---|---|
-| 22.11.2026 | 6ccd3a5 | Процедурные операции и документация КТ2 |
-| 23.11.2026 | ca514c0 | Java 21, UML и эквивалентность |
-| 24.11.2026 | 671fe85 / 32bb0dc / 16f8d23 | Три отдельных исправления по рецензии |
-| 24.11.2026 | a9cf329 | Подтверждения Софьи и проверка её UML |
-
-Это значения AuthorDate, читаемые `%ad`; CommitDate доступна отдельно:
-`git log --format="%h %aI %cI %s"`. Полная история сохраняется командой Git;
-резервная ветка входит в `--all`. Соответствие SHA находится в review/review.md.
-
-## Зафиксировать документацию
+Из корня репозитория, Git Bash:
 
 ```bash
-git switch kt3-java-implementation
 git status --short
-git add -- README.md docs review/review.md src/java/README.md src/java/verification/requirements.md src/java/verification/verification.md
+git add -- review/review.md README.md docs/kt3_traceability.md docs/kt3_requirements.md docs/kt3_delivery_status.md docs/kt3_commit_plan.md docs/report_documentation_check.json docs/Отчет_ИКБО-10-24_ИвановаАВ_КТ3.docx src/java/verification/requirements.md src/java/verification/archive-check.json src/java/verification/archive-build.txt
 git diff --cached --stat
 git diff --cached --check
-git commit -m "Finalize KT3 documentation, current commit references, code metrics and peer-review status"
-git push origin kt3-java-implementation
-python docs/export_git_log.py
-```
-
-Коммит включает исправленный отчёт и документы docs/, соответствие SHA,
-актуальные метрики и инструкцию выгрузки истории. Изменённый архив КТ2
-и локальный RAR КТ3 не добавляются: не использовать `git add .`.
-vcs/git_log.txt генерируется и остаётся исключённым из отслеживания.
-
-## Объединить с main
-
-Сначала сохранить оставшиеся локальные файлы (в текущей папке есть изменённый
-архив КТ2 и неотслеживаемый RAR), затем выполнить обычное слияние:
-
-```bash
-git stash push --include-untracked -m "Preserve local archives while merging KT3"
-git switch main
-git pull --ff-only origin main
-git merge --no-ff kt3-java-implementation -m "Merge verified KT3 Java implementation, peer-review corrections and documentation"
+git commit -m "Confirm partner review corrections and finalize KT3 submission"
 git push origin main
-git stash pop
 python docs/export_git_log.py
-git status --short
-git log -5 --oneline
 ```
 
-Если любая Git-команда сообщает конфликт, остановиться и разобрать его до
-следующей команды. Если stash не был создан, не выполнять stash pop.
-Текущий план не требует force push. После успешного push main обновить
-статус комплекта и историю в папке сдачи/архиве. Результат будущего слияния
-не записывается заранее как выполненный.
+Эта последовательность применяется к настоящей редакции. После её выполнения
+повторно запускать git commit без новых изменений не нужно. При изменениях
+на удалённом main сначала согласовать их обычным слиянием; force push не нужен.
+Пользовательские ZIP КТ2 и RAR КТ3 не включаются — git add . не применяется.
 
-## Выгрузка истории в UTF-8
-
-Из корня проекта: `python docs/export_git_log.py`. Скрипт использует стандартную
-библиотеку Python и сохраняет байты вывода Git напрямую, без перенаправления
-PowerShell. Запускать после последнего коммита и после слияния. Содержимое
-git_log.txt вручную не редактировать; файл по необходимости копируется в vcs/
-комплекта сдачи. Тот же скрипт работает из Git Bash и PowerShell.
+После последнего коммита журнал выгружается в UTF-8 без BOM и копируется
+в новый комплект сдачи. В архив идут только требуемые памяткой файлы;
+исходники Java сверяются с реально проверенной чистой распаковкой.
+Старые SHA в цитатах рецензента сохраняются, соответствие текущим SHA
+приведено в review/review.md. AuthorDate и CommitDate доступны раздельно:
+`git log --format="%h %aI %cI %s"`. История — вывод Git, без ручного редактирования.
