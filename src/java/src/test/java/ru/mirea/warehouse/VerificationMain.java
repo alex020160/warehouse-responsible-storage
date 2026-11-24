@@ -74,6 +74,12 @@ public final class VerificationMain {
         }
         JsonObject response=new JsonObject();response.add("results",results);response.add("state",gson.toJsonTree(data));return response;
     }
+    private void assertRejectedUnchanged(Warehouse data, Runnable operation) {
+        String before=repository.encode(data); boolean rejected=false;
+        try { operation.run(); } catch (IllegalArgumentException ex) { rejected=true; }
+        if (!rejected || !before.equals(repository.encode(data))) throw new AssertionError("Rejected service call changed Warehouse");
+        repository.getValidator().validate(data);
+    }
     private void selfTest(Path seed) throws Exception {
         Warehouse data=repository.load(seed);
         // Review #1: preserve duplicate fields in raw strings, not in JsonObject.
@@ -90,6 +96,32 @@ public final class VerificationMain {
             if (!rejected) throw new AssertionError("Invalid or duplicate JSON was accepted");
         }
         if (!repository.encode(repository.decode(raw)).equals(raw)) throw new AssertionError("Valid JSON changed");
+        // Review #2: direct calls must reject unsupported dates before any mutation.
+        for (LocalDate invalidDate : Arrays.asList(LocalDate.of(0,1,1), LocalDate.of(-1,1,1), LocalDate.of(10000,1,1), null)) {
+            Warehouse expectedData=repository.copy(data);
+            ReceivingService expectedService=new ReceivingService(expectedData,repository.getValidator());
+            assertRejectedUnchanged(expectedData, () -> expectedService.registerExpectedDelivery("C001",invalidDate,
+                    List.of(new DeliveryItem(null,null,"P001",BigInteger.ONE,null))));
+            Warehouse received=repository.copy(data);
+            ReceivingService service=new ReceivingService(received,repository.getValidator());
+            List<DeliveryItem> actualItems=List.of(new DeliveryItem(null,null,"P001",null,BigInteger.TEN));
+            assertRejectedUnchanged(received, () -> service.recordActualReceipt("D001",actualItems,invalidDate));
+            service.recordActualReceipt("D001",actualItems,LocalDate.of(2026,11,22));
+            service.registerDiscrepancies("D001",List.of());
+            if (invalidDate != null) {
+                assertRejectedUnchanged(received, () -> service.acceptDelivery("D001",
+                        Map.of("I001",new Batch(null,null,"REVIEW",invalidDate,BigInteger.TEN)),true));
+            }
+            service.acceptDelivery("D001",Map.of("I001",new Batch(null,null,"REVIEW",null,BigInteger.TEN)),true);
+            assertRejectedUnchanged(received, () -> service.registerPlacement(
+                    new Placement("PL002","B002","S001",BigInteger.TEN,invalidDate),null));
+        }
+        for (LocalDate validDate : List.of(LocalDate.of(1,1,1),LocalDate.of(9999,12,31))) {
+            Warehouse candidate=repository.copy(data);
+            new ReceivingService(candidate,repository.getValidator()).registerExpectedDelivery("C001",validDate,
+                    List.of(new DeliveryItem(null,null,"P001",BigInteger.ONE,null)));
+            repository.getValidator().validate(candidate);
+        }
         DeliveryItem expected=new DeliveryItem(null,null,"P001",BigInteger.TEN,null);
         DeliveryItem actual=new DeliveryItem(null,null,"P001",null,BigInteger.valueOf(8));
         var result=new DeliveryComparator().compareDeliveryItems(List.of(expected),List.of(actual));
@@ -112,7 +144,7 @@ public final class VerificationMain {
             if(!rejected||!before.equals(Files.readString(file,StandardCharsets.UTF_8))) throw new AssertionError("Invalid save changed file");
             try(var files=Files.list(directory)) { if(files.count()!=1) throw new AssertionError("Temporary files leaked"); }
         } finally { Files.deleteIfExists(file);Files.deleteIfExists(directory); }
-        System.out.println("PASS: "+requests.size()+" Python/Java reference cases, JSON round trip, 6 raw JSON rejection cases, rejected save preserves file");
+        System.out.println("PASS: "+requests.size()+" Python/Java reference cases, JSON round trip, 6 raw JSON rejection cases, 15 rejected date calls preserve state, 2 valid date boundaries, rejected save preserves file");
     }
     public static void main(String[] args) throws Exception {
         VerificationMain check=new VerificationMain();

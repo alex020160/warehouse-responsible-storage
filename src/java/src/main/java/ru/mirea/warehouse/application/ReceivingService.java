@@ -31,6 +31,7 @@ public final class ReceivingService {
     }
     public Delivery registerExpectedDelivery(String clientId, LocalDate expectedDate, List<DeliveryItem> items) {
         validator.validate(data); data.findClient(clientId); validator.require(expectedDate != null, "Укажите дату.");
+        validator.parseDate(expectedDate.toString());
         validateItems(items, false, false);
         Delivery result = new Delivery(newId(data.getDeliveries(), Delivery::getDeliveryId, "D"), clientId, expectedDate, null, "ожидается");
         data.add(result);
@@ -40,7 +41,8 @@ public final class ReceivingService {
     public List<String> recordActualReceipt(String id, List<DeliveryItem> actualItems, LocalDate date) {
         validator.validate(data); Delivery delivery = data.findDelivery(id);
         validator.require(delivery.getStatus().equals("ожидается"), "Повторный ввод факта запрещён.");
-        validator.require(date != null, "Укажите дату."); validateItems(actualItems, true, true);
+        validator.require(date != null, "Укажите дату."); validator.parseDate(date.toString());
+        validateItems(actualItems, true, true);
         List<DeliveryItem> items = new ArrayList<>(deliveryItems(id));
         for (DeliveryItem i : items) i.recordActual(BigInteger.ZERO);
         for (DeliveryItem actual : actualItems) {
@@ -99,6 +101,7 @@ public final class ReceivingService {
             Batch detail = entry.getValue();
             validator.require(item.getActualQuantity() != null && item.getActualQuantity().signum() > 0 && detail.getQuantity() != null && detail.getQuantity().signum() > 0 && detail.getQuantity().compareTo(item.getActualQuantity()) <= 0, "Неверное принятое количество.");
             validator.require(detail.getBatchNumber() != null && !detail.getBatchNumber().isBlank(), "Нужен номер партии.");
+            if (detail.getExpirationDate() != null) validator.parseDate(detail.getExpirationDate().toString());
         }
         List<Batch> result = new ArrayList<>();
         for (var entry : details.entrySet()) {
@@ -127,6 +130,7 @@ public final class ReceivingService {
         validator.require(delivery.getStatus().equals("принята"), "Поставка должна быть принята.");
         validator.require(placement.getQuantity() != null && placement.getQuantity().signum() > 0 && placement.getQuantity().equals(batchRemaining(batch.getBatchId())), "Разместите всю оставшуюся партию.");
         validator.require(placement.getPlacementDate() != null && !placement.getPlacementDate().isBefore(delivery.getActualDate()), "Неверная дата размещения.");
+        validator.parseDate(placement.getPlacementDate().toString());
         Product product = data.findProduct(item.getProductId());
         validator.require(requiredZone == null || product.getAllowedZone() == null || product.getAllowedZone().equals(requiredZone), "Противоречие ограничения зоны.");
         if (requiredZone != null) product = new Product(product.getProductId(), product.getName(), product.getSku(), product.getStorageConditions(), requiredZone);
