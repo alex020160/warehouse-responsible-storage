@@ -7,8 +7,8 @@
   },
   "java": {
     "files": 19,
-    "physical_lines": 850,
-    "nonempty_lines": 800,
+    "physical_lines": 882,
+    "nonempty_lines": 832,
     "classes": 18,
     "interfaces": 1,
     "methods": 115,
