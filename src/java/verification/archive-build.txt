@@ -1,0 +1,3 @@
+PASS: 41 Python/Java reference cases, JSON round trip, rejected save preserves file
+
+Console: 6 -> 0, JSON bytes unchanged.

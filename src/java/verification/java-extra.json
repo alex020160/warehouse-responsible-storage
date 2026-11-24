@@ -1,0 +1,9 @@
+{
+  "clean_build": true,
+  "dependency_sha256": true,
+  "console_full_workflow": true,
+  "invalid_input_unchanged": true,
+  "repeat_unchanged": true,
+  "eof": true,
+  "cancel_save_unchanged": true
+}

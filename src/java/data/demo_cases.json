@@ -1,0 +1,79 @@
+[
+  {
+    "name": "без расхождений",
+    "delivery_id": "D001",
+    "actual_items": [
+      {
+        "product_id": "P001",
+        "actual_quantity": 10
+      }
+    ],
+    "expected_discrepancies": []
+  },
+  {
+    "name": "недостача",
+    "delivery_id": "D002",
+    "actual_items": [
+      {
+        "product_id": "P001",
+        "actual_quantity": 7
+      }
+    ],
+    "expected_discrepancies": [
+      {
+        "product_id": "P001",
+        "discrepancy_type": "недостача",
+        "quantity_difference": -3
+      }
+    ]
+  },
+  {
+    "name": "излишек",
+    "delivery_id": "D003",
+    "actual_items": [
+      {
+        "product_id": "P001",
+        "actual_quantity": 12
+      }
+    ],
+    "expected_discrepancies": [
+      {
+        "product_id": "P001",
+        "discrepancy_type": "излишек",
+        "quantity_difference": 2
+      }
+    ]
+  },
+  {
+    "name": "незаявленный товар",
+    "delivery_id": "D004",
+    "actual_items": [
+      {
+        "product_id": "P001",
+        "actual_quantity": 10
+      },
+      {
+        "product_id": "P002",
+        "actual_quantity": 3
+      }
+    ],
+    "expected_discrepancies": [
+      {
+        "product_id": "P002",
+        "discrepancy_type": "неожиданный товар",
+        "quantity_difference": 3
+      }
+    ]
+  },
+  {
+    "name": "отсутствие подходящего режима",
+    "delivery_id": "D005",
+    "actual_items": [
+      {
+        "product_id": "P004",
+        "actual_quantity": 5
+      }
+    ],
+    "expected_discrepancies": []
+  }
+]

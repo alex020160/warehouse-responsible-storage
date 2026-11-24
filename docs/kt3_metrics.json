@@ -1,0 +1,17 @@
+{
+  "python": {
+    "files": 4,
+    "physical_lines": 876,
+    "nonempty_lines": 806,
+    "functions": 33
+  },
+  "java": {
+    "files": 19,
+    "physical_lines": 882,
+    "nonempty_lines": 832,
+    "classes": 18,
+    "interfaces": 1,
+    "methods": 115,
+    "constructors": 18
+  }
+}

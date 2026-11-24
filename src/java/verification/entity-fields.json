@@ -1,0 +1,89 @@
+{
+  "Client": {
+    "json_fields": [
+      "client_id",
+      "name",
+      "contact_info"
+    ],
+    "uml": true,
+    "java": true
+  },
+  "Delivery": {
+    "json_fields": [
+      "delivery_id",
+      "client_id",
+      "expected_date",
+      "actual_date",
+      "status"
+    ],
+    "uml": true,
+    "java": true
+  },
+  "Product": {
+    "json_fields": [
+      "product_id",
+      "name",
+      "sku",
+      "storage_conditions",
+      "allowed_zone"
+    ],
+    "uml": true,
+    "java": true
+  },
+  "DeliveryItem": {
+    "json_fields": [
+      "delivery_item_id",
+      "delivery_id",
+      "product_id",
+      "expected_quantity",
+      "actual_quantity"
+    ],
+    "uml": true,
+    "java": true
+  },
+  "Batch": {
+    "json_fields": [
+      "batch_id",
+      "delivery_item_id",
+      "batch_number",
+      "expiration_date",
+      "quantity"
+    ],
+    "uml": true,
+    "java": true
+  },
+  "Discrepancy": {
+    "json_fields": [
+      "discrepancy_id",
+      "delivery_item_id",
+      "discrepancy_type",
+      "quantity_difference",
+      "description"
+    ],
+    "uml": true,
+    "java": true
+  },
+  "StorageCell": {
+    "json_fields": [
+      "cell_id",
+      "zone",
+      "capacity",
+      "available_capacity",
+      "storage_conditions",
+      "status"
+    ],
+    "uml": true,
+    "java": true
+  },
+  "Placement": {
+    "json_fields": [
+      "placement_id",
+      "batch_id",
+      "cell_id",
+      "quantity",
+      "placement_date"
+    ],
+    "uml": true,
+    "java": true
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "date": "22.11.2026",
+  "region": "Москва и удалённая работа из РФ; дополнительные города в мультигородских карточках сохранены.",
+  "method": "Целевая, нерепрезентативная выборка 10 объявлений разных компаний: 9 Хабр Карьера, 1 официальный сайт Яндекса. Частота — число карточек с явным упоминанием навыка в требованиях, преимуществах, задачах или стеке; не только обязательные требования. Категория «Реляционные БД / SQL» включает основы реляционных БД, SQL и PostgreSQL. «Контейнеры» включает Docker, Kubernetes и прямое упоминание контейнеров. Один навык учитывается не более одного раза в карточке. Наличие вакансии не означает доступность для начинающего.",
+  "jobs": [
+    {
+      "company": "ITK academy",
+      "title": "Java Developer (Junior)",
+      "url": "https://career.habr.com/vacancies/1000170526",
+      "viewed": "22.11.2026",
+      "skills": "Java/Kotlin Core, коллекции, Git и ветки, Spring/Boot (включая Spring Test), Docker, CI/CD, ACID и индексы реляционных БД; pet-проекты.",
+      "experience": "Junior; число лет не указано.",
+      "conditions": "Удалённо, 5/2, гибкое начало; от 75 000 руб.; порядок налогообложения не указан.",
+      "codes": [
+        "Java",
+        "Реляционные БД / SQL",
+        "Git",
+        "Spring",
+        "Контейнеры",
+        "Тестирование"
+      ]
+    },
+    {
+      "company": "БФТ-Холдинг",
+      "title": "Java-разработчик (Middle)",
+      "url": "https://career.habr.com/vacancies/1000165768",
+      "viewed": "22.11.2026",
+      "skills": "Java 11+, Spring 4+, многопоточность/JMM, Maven, Git, SQL/NoSQL, PostgreSQL/Cassandra, Kafka/RabbitMQ, GitLab CI; Kubernetes в стеке.",
+      "experience": "Коммерческая разработка от 3 лет.",
+      "conditions": "Москва, можно удалённо; ТК РФ, ДМС после испытательного срока; зарплата не указана.",
+      "codes": [
+        "Java",
+        "Реляционные БД / SQL",
+        "Git",
+        "Spring",
+        "Контейнеры"
+      ]
+    },
+    {
+      "company": "Лига Цифровой Экономики",
+      "title": "Java-разработчик (Junior)",
+      "url": "https://career.habr.com/vacancies/1000169581",
+      "viewed": "22.11.2026",
+      "skills": "ООП, алгоритмы и структуры данных, JVM; Java, REST, Git, PostgreSQL в карточке; юнит-тесты и контейнеры в задачах.",
+      "experience": "Junior; число лет не указано.",
+      "conditions": "Москва, можно удалённо; зарплата не указана.",
+      "codes": [
+        "Java",
+        "Реляционные БД / SQL",
+        "Git",
+        "API / интеграции",
+        "Тестирование",
+        "Контейнеры"
+      ]
+    },
+    {
+      "company": "CINIMEX",
+      "title": "Младший системный аналитик",
+      "url": "https://career.habr.com/vacancies/1000169257",
+      "viewed": "22.11.2026",
+      "skills": "Сбор требований и ТЗ, основы SQL и реляционных БД, проверка ETL и данных; REST, UML, Confluence — преимущества.",
+      "experience": "Junior; число лет не указано.",
+      "conditions": "Москва, офис, 5/2; зарплата не указана.",
+      "codes": [
+        "Реляционные БД / SQL",
+        "API / интеграции",
+        "UML / BPMN"
+      ]
+    },
+    {
+      "company": "Top Selection",
+      "title": "QAA на Java",
+      "url": "https://career.habr.com/vacancies/1000169258",
+      "viewed": "22.11.2026",
+      "skills": "Java 17/21, ООП, коллекции и многопоточность, JUnit 5, Mockito, Selenide, REST/API, Postman, SQL/PostgreSQL, Maven, Git, GitLab CI, Docker/Kubernetes.",
+      "experience": "От 5 лет в QA, включая от 3 лет автоматизации на Java.",
+      "conditions": "Удалённо, гражданство РФ, договор с ИП; 180–190 тыс. руб.; порядок налогообложения не указан.",
+      "codes": [
+        "Java",
+        "Реляционные БД / SQL",
+        "Git",
+        "Контейнеры",
+        "Тестирование",
+        "API / интеграции"
+      ]
+    },
+    {
+      "company": "VK",
+      "title": "Senior/Lead Java-разработчик в MAX",
+      "url": "https://career.habr.com/vacancies/1000167184",
+      "viewed": "22.11.2026",
+      "skills": "Java backend, алгоритмы, структуры данных, многопоточность, отказоустойчивые высоконагруженные системы; PostgreSQL/Cassandra/Scylla — преимущество.",
+      "experience": "Java backend от 5 лет.",
+      "conditions": "Москва или Санкт-Петербург; удалённость и зарплата не указаны.",
+      "codes": [
+        "Java",
+        "Реляционные БД / SQL"
+      ]
+    },
+    {
+      "company": "Яндекс",
+      "title": "Разработчик в платформу Яндекс 360 on-premises",
+      "url": "https://yandex.ru/jobs/vacancies/razrabotchik-v-platformu-yandeks-360-onpremises-49046",
+      "viewed": "22.11.2026",
+      "skills": "Java, Spring Boot, SQL, проектирование API, Linux, Docker, Kubernetes; интеграция инфраструктуры и диагностика.",
+      "experience": "От 3 лет.",
+      "conditions": "В том числе Москва; офис или гибрид, ДМС; зарплата не указана.",
+      "codes": [
+        "Java",
+        "Реляционные БД / SQL",
+        "Spring",
+        "Контейнеры",
+        "API / интеграции"
+      ]
+    },
+    {
+      "company": "РОСГОССТРАХ",
+      "title": "Senior Java-разработчик",
+      "url": "https://career.habr.com/vacancies/1000163623",
+      "viewed": "22.11.2026",
+      "skills": "Java 8–17, Spring, Hibernate, PostgreSQL, Kafka, ООП, шаблоны проектирования; OpenAPI/Swagger, Liquibase, мониторинг.",
+      "experience": "Коммерческая Java-разработка от 3 лет.",
+      "conditions": "Удалённо 5/2 либо гибрид в Москве; зарплата не указана.",
+      "codes": [
+        "Java",
+        "Реляционные БД / SQL",
+        "Spring",
+        "API / интеграции"
+      ]
+    },
+    {
+      "company": "Cloud.ru",
+      "title": "Бизнес-аналитик",
+      "url": "https://career.habr.com/vacancies/1000167163",
+      "viewed": "22.11.2026",
+      "skills": "Сбор и формализация требований, SQL (JOIN и оконные функции), модели данных, ETL, Data Governance, Python для анализа; работа с заказчиком.",
+      "experience": "Точное число лет не указано.",
+      "conditions": "Москва; формат и зарплата не указаны.",
+      "codes": [
+        "Реляционные БД / SQL"
+      ]
+    },
+    {
+      "company": "Extyl",
+      "title": "Системный аналитик / Проектная работа / АУТСТАФФ",
+      "url": "https://career.habr.com/vacancies/1000166916",
+      "viewed": "22.11.2026",
+      "skills": "ТЗ, требования, SOAP/REST и JSON, SQL, проектирование БД, BPMN/UML, микросервисы, банковские процессы.",
+      "experience": "От 3 лет; законченное высшее образование.",
+      "conditions": "Москва и МО; сначала офис минимум 2 недели, затем гибрид; ТК РФ, 5/2, проект от года; зарплата не указана.",
+      "codes": [
+        "Реляционные БД / SQL",
+        "API / интеграции",
+        "UML / BPMN"
+      ]
+    }
+  ],
+  "frequencies": {
+    "Реляционные БД / SQL": 10,
+    "Java": 7,
+    "API / интеграции": 6,
+    "Контейнеры": 5,
+    "Spring": 4,
+    "Git": 4,
+    "Тестирование": 3,
+    "UML / BPMN": 2
+  },
+  "programs": [
+    {
+      "organization": "Яндекс Практикум",
+      "title": "Java-разработчик",
+      "url": "https://practicum.yandex.ru/java-developer/",
+      "duration": "10 месяцев",
+      "content": "Java, ООП, Spring Boot, базы данных, юнит-, mock- и интеграционные тесты, Docker; практические проекты.",
+      "relation": "Переход от консольной программы к backend-сервису; закрывает темы Spring, тестов и контейнеров."
+    },
+    {
+      "organization": "Stepik; автор Г. П. Озерова",
+      "title": "Интерактивный тренажёр по SQL",
+      "url": "https://stepik.org/course/63054/promo",
+      "duration": "Не менее 24 часов; самостоятельный темп",
+      "content": "Реляционные БД, создание, выполнение и отладка SQL-запросов; 173 интерактивные задачи.",
+      "relation": "Точечная практика SQL для разработки и аналитики; не заменяет опыт промышленной эксплуатации."
+    },
+    {
+      "organization": "OTUS",
+      "title": "Java разработчик. Базовый уровень",
+      "url": "https://otus.ru/lessons/java-basic/process/",
+      "duration": "5 месяцев",
+      "content": "Синтаксис Java, ООП, коллекции, Git, файлы, исключения, потоки, SQL и JDBC, проектная практика.",
+      "relation": "Систематизация основ после учебного проекта; подготовка к последующему освоению Spring."
+    }
+  ]
+}

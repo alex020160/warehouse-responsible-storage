@@ -1,7 +1,7 @@
 """Процедурные операции приёмки; состояние передаётся параметром data"""
 
 from algorithms import compare_delivery_items, select_storage_cell
-from storage import find_record, new_id, require_date, require_quantity
+from storage import find_record, new_id, require_date, require_quantity, validate_data
 
 
 def delivery_items(data, delivery_id):
@@ -35,6 +35,7 @@ def validate_items(data, items, quantity_key, allow_empty=False):
 
 
 def register_expected_delivery(data, delivery):
+    validate_data(data)
     find_record(data, "clients", "client_id", delivery["client_id"])
     require_date(delivery["expected_date"])
     validate_items(data, delivery["items"], "expected_quantity")
@@ -59,10 +60,12 @@ def register_expected_delivery(data, delivery):
                 "actual_quantity": None,
             }
         )
+    validate_data(data)
     return result
 
 
 def record_actual_receipt(data, delivery_id, actual_items, actual_date):
+    validate_data(data)
     delivery = find_record(data, "deliveries", "delivery_id", delivery_id)
     if delivery["status"] != "ожидается":
         raise ValueError(
@@ -92,6 +95,7 @@ def record_actual_receipt(data, delivery_id, actual_items, actual_date):
         found["actual_quantity"] = actual["actual_quantity"]
     delivery["actual_date"] = actual_date
     delivery["status"] = "поступила"
+    validate_data(data)
     return [item["delivery_item_id"] for item in items]
 
 
@@ -104,6 +108,7 @@ def receipt_discrepancies(data, delivery_id):
 
 
 def register_discrepancies(data, delivery_id, discrepancies):
+    validate_data(data)
     delivery = find_record(data, "deliveries", "delivery_id", delivery_id)
     if delivery["status"] not in ("поступила", "проверена", "требует согласования"):
         raise ValueError(
@@ -148,11 +153,13 @@ def register_discrepancies(data, delivery_id, discrepancies):
         data["discrepancies"].append(record)
         result.append(record)
     delivery["status"] = "требует согласования" if result else "проверена"
+    validate_data(data)
     return result
 
 
 def accept_delivery(data, delivery_id, batch_details, approved):
     """После ручного согласования фиксируются принятые количества партий."""
+    validate_data(data)
     delivery = find_record(data, "deliveries", "delivery_id", delivery_id)
     if delivery["status"] not in ("проверена", "требует согласования"):
         raise ValueError("Сначала зарегистрируйте результаты приёмки: пункт 3.")
@@ -194,6 +201,7 @@ def accept_delivery(data, delivery_id, batch_details, approved):
         data["batches"].append(batch)
         result.append(batch)
     delivery["status"] = "принята"
+    validate_data(data)
     return result
 
 
@@ -204,6 +212,7 @@ def batch_remaining(data, batch_id):
 
 
 def register_placement(data, placement, required_zone=None):
+    validate_data(data)
     if any(p["placement_id"] == placement["placement_id"] for p in data["placements"]):
         raise ValueError("Это размещение уже зарегистрировано.")
     batch = find_record(data, "batches", "batch_id", placement["batch_id"])
@@ -249,4 +258,5 @@ def register_placement(data, placement, required_zone=None):
     ]
     if all(batch_remaining(data, b["batch_id"]) == 0 for b in own_batches):
         delivery["status"] = "размещена"
+    validate_data(data)
     return record

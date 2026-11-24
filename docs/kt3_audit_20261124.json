@@ -1,0 +1,16 @@
+{
+  "sha": "a9cf3292bf4de5a47c2f928a7f3001bad66fcb33",
+  "clean_build": true,
+  "parity": 41,
+  "comparison_guard_variants": 5,
+  "console_exit": true,
+  "source_json_unchanged": true,
+  "date": "2026-11-24",
+  "jdk": "Amazon Corretto 21.0.13.1.2",
+  "python": "3.13.7",
+  "gson": "2.13.2",
+  "raw_json_rejections": 6,
+  "rejected_dates_preserve_state": 15,
+  "valid_date_boundaries": 2,
+  "dependency_source": "Previously downloaded local Gson JAR; SHA-256 checked; no network dependency download in repeat run"
+}
