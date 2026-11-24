@@ -1,0 +1,166 @@
+[
+  {
+    "case": "без отклонений",
+    "passed": true
+  },
+  {
+    "case": "недостача",
+    "passed": true
+  },
+  {
+    "case": "излишек",
+    "passed": true
+  },
+  {
+    "case": "незаявленный",
+    "passed": true
+  },
+  {
+    "case": "пустой факт",
+    "passed": true
+  },
+  {
+    "case": "оба пусты",
+    "passed": true
+  },
+  {
+    "case": "пустое ожидание",
+    "passed": true
+  },
+  {
+    "case": "порядок результатов",
+    "passed": true
+  },
+  {
+    "case": "целые без переполнения",
+    "passed": true
+  },
+  {
+    "case": "best fit",
+    "passed": true
+  },
+  {
+    "case": "нет места",
+    "passed": true
+  },
+  {
+    "case": "пустые ячейки",
+    "passed": true
+  },
+  {
+    "case": "ничья",
+    "passed": true
+  },
+  {
+    "case": "условия",
+    "passed": true
+  },
+  {
+    "case": "зона",
+    "passed": true
+  },
+  {
+    "case": "зона не ограничена",
+    "passed": true
+  },
+  {
+    "case": "точное заполнение",
+    "passed": true
+  },
+  {
+    "case": "блокировка",
+    "passed": true
+  },
+  {
+    "case": "полный процесс и повторное размещение",
+    "passed": true
+  },
+  {
+    "case": "регистрация недостача",
+    "passed": true
+  },
+  {
+    "case": "регистрация излишек",
+    "passed": true
+  },
+  {
+    "case": "качество и частичная приёмка",
+    "passed": true
+  },
+  {
+    "case": "неверное качество",
+    "passed": true
+  },
+  {
+    "case": "повтор факта",
+    "passed": true
+  },
+  {
+    "case": "отказ согласования",
+    "passed": true
+  },
+  {
+    "case": "неверные количественные расхождения",
+    "passed": true
+  },
+  {
+    "case": "новая поставка",
+    "passed": true
+  },
+  {
+    "case": "незаявленный товар в процессе",
+    "passed": true
+  },
+  {
+    "case": "битая ссылка",
+    "passed": true
+  },
+  {
+    "case": "неверная вместимость",
+    "passed": true
+  },
+  {
+    "case": "неверная разность",
+    "passed": true
+  },
+  {
+    "case": "неверный знак",
+    "passed": true
+  },
+  {
+    "case": "лишнее поле",
+    "passed": true
+  },
+  {
+    "case": "нецелое количество",
+    "passed": true
+  },
+  {
+    "case": "булево количество",
+    "passed": true
+  },
+  {
+    "case": "null вместо ключа",
+    "passed": true
+  },
+  {
+    "case": "неверная дата",
+    "passed": true
+  },
+  {
+    "case": "пропущено расхождение",
+    "passed": true
+  },
+  {
+    "case": "дубликат ключа",
+    "passed": true
+  },
+  {
+    "case": "валидная база",
+    "passed": true
+  },
+  {
+    "case": "чтение и запись",
+    "passed": true
+  }
+]

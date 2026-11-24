@@ -1,0 +1,532 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" version="24.7.17" type="device" compressed="false">
+  <diagram id="page0" name="01 Пакеты">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1900" pageHeight="1450" background="#ffffff">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Приёмка товара на ответственное хранение — структура пакетов" style="text;html=1;fontFamily=Arial;fontSize=28;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="1560" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="cli" value="«package» cli&lt;br&gt;ConsoleApp" style="shape=folder;tabWidth=100;tabHeight=30;html=1;fillColor=#ffffff;fontSize=26;fontFamily=Arial;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="160" width="480" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="application" value="«package» application&lt;br&gt;ReceivingService&lt;br&gt;DeliveryComparator · StorageSelector" style="shape=folder;tabWidth=100;tabHeight=30;html=1;fillColor=#ffffff;fontSize=26;fontFamily=Arial;align=center;" vertex="1" parent="1">
+          <mxGeometry x="940" y="160" width="600" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="domain" value="«package» domain&lt;br&gt;8 сущностей ER&lt;br&gt;Warehouse · QualityDiscrepancy" style="shape=folder;tabWidth=100;tabHeight=30;html=1;fillColor=#ffffff;fontSize=26;fontFamily=Arial;align=center;" vertex="1" parent="1">
+          <mxGeometry x="940" y="600" width="600" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="rules" value="«package» rules&lt;br&gt;StorageRule&lt;br&gt;ConditionsRule · ZoneRule" style="shape=folder;tabWidth=100;tabHeight=30;html=1;fillColor=#ffffff;fontSize=26;fontFamily=Arial;align=center;" vertex="1" parent="1">
+          <mxGeometry x="940" y="1000" width="600" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="infrastructure" value="«package» infrastructure&lt;br&gt;JsonWarehouseRepository · IntegrityValidator" style="shape=folder;tabWidth=100;tabHeight=30;html=1;fillColor=#ffffff;fontSize=26;fontFamily=Arial;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="600" width="620" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="p1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;endArrow=open;dashed=1;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.42;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="cli" target="application">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;endArrow=open;dashed=1;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="application" target="domain">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;endArrow=open;dashed=1;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="application" target="rules">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1690" y="250"/><mxPoint x="1690" y="1085"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="p4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;endArrow=open;dashed=1;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.39;entryY=0;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="cli" target="infrastructure">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="p5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;endArrow=open;dashed=1;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0;entryY=0.595;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="infrastructure" target="domain">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="note" value="Сущности не добавляются в ER: Warehouse — контейнер; QualityDiscrepancy — специализация Discrepancy; остальные классы реализуют операции и ввод/вывод." style="text;html=1;align=left;fontSize=20;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1250" width="1730" height="100" as="geometry"/>
+        </mxCell>
+      <mxCell id="p6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;endArrow=open;dashed=1;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0;entryY=0.595;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="application" target="infrastructure"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="820" y="286"/><mxPoint x="820" y="642.5"/></Array></mxGeometry></mxCell></root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page1" name="02 Клиенты и поставки">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1900" pageHeight="1450" background="#ffffff">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="domain — клиент, поставка, товар и позиция поставки" style="text;html=1;fontFamily=Arial;fontSize=28;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="1560" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="Client" value="Client" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="90" width="730" height="257" as="geometry"/>
+        </mxCell>
+        <mxCell id="Clienta" value="- clientId: String&lt;br&gt;- name: String&lt;br&gt;- contactInfo: String" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="Client">
+          <mxGeometry x="0" y="58" width="730" height="87" as="geometry"/>
+        </mxCell>
+        <mxCell id="Clientline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="Client">
+          <mxGeometry x="0" y="145" width="730" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="Clientm" value="+ Client(String, String, String)&lt;br&gt;+ getClientId(): String&lt;br&gt;+ getName(): String&lt;br&gt;+ getContactInfo(): String" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="Client">
+          <mxGeometry x="0" y="146" width="730" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="Delivery" value="Delivery" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="90" width="730" height="407" as="geometry"/>
+        </mxCell>
+        <mxCell id="Deliverya" value="- deliveryId: String&lt;br&gt;- clientId: String&lt;br&gt;- expectedDate: LocalDate&lt;br&gt;- actualDate: LocalDate&lt;br&gt;- status: String" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="Delivery">
+          <mxGeometry x="0" y="58" width="730" height="137" as="geometry"/>
+        </mxCell>
+        <mxCell id="Deliveryline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="Delivery">
+          <mxGeometry x="0" y="195" width="730" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="Deliverym" value="+ Delivery(String, String, LocalDate, LocalDate, String)&lt;br&gt;+ getDeliveryId(): String&lt;br&gt;+ getClientId(): String&lt;br&gt;+ getExpectedDate(): LocalDate&lt;br&gt;+ getActualDate(): LocalDate&lt;br&gt;+ getStatus(): String&lt;br&gt;+ receive(LocalDate): void&lt;br&gt;+ setStatus(String): void" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="Delivery">
+          <mxGeometry x="0" y="196" width="730" height="212" as="geometry"/>
+        </mxCell>
+        <mxCell id="Product" value="Product" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="520" width="730" height="357" as="geometry"/>
+        </mxCell>
+        <mxCell id="Producta" value="- productId: String&lt;br&gt;- name: String&lt;br&gt;- sku: String&lt;br&gt;- storageConditions: String&lt;br&gt;- allowedZone: String" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="Product">
+          <mxGeometry x="0" y="58" width="730" height="137" as="geometry"/>
+        </mxCell>
+        <mxCell id="Productline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="Product">
+          <mxGeometry x="0" y="195" width="730" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="Productm" value="+ Product(String, String, String, String, String)&lt;br&gt;+ getProductId(): String&lt;br&gt;+ getName(): String&lt;br&gt;+ getSku(): String&lt;br&gt;+ getStorageConditions(): String&lt;br&gt;+ getAllowedZone(): String" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="Product">
+          <mxGeometry x="0" y="196" width="730" height="162" as="geometry"/>
+        </mxCell>
+        <mxCell id="DeliveryItem" value="DeliveryItem" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="520" width="730" height="382" as="geometry"/>
+        </mxCell>
+        <mxCell id="DeliveryItema" value="- deliveryItemId: String&lt;br&gt;- deliveryId: String&lt;br&gt;- productId: String&lt;br&gt;- expectedQuantity: BigInteger&lt;br&gt;- actualQuantity: BigInteger" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="DeliveryItem">
+          <mxGeometry x="0" y="58" width="730" height="137" as="geometry"/>
+        </mxCell>
+        <mxCell id="DeliveryItemline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="DeliveryItem">
+          <mxGeometry x="0" y="195" width="730" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="DeliveryItemm" value="+ DeliveryItem(String, String, String, BigInteger, BigInteger)&lt;br&gt;+ getDeliveryItemId(): String&lt;br&gt;+ getDeliveryId(): String&lt;br&gt;+ getProductId(): String&lt;br&gt;+ getExpectedQuantity(): BigInteger&lt;br&gt;+ getActualQuantity(): BigInteger&lt;br&gt;+ recordActual(BigInteger): void" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="DeliveryItem">
+          <mxGeometry x="0" y="196" width="730" height="187" as="geometry"/>
+        </mxCell>
+        <mxCell id="note" value="Ассоциации реализованы идентификаторами и проверяются IntegrityValidator. Пара (delivery_id, product_id) уникальна; M:N Delivery–Product разрешена DeliveryItem." style="text;html=1;align=left;fontSize=20;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="20" y="970" width="1560" height="75" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page2" name="03 Партии и размещения">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1900" pageHeight="1450" background="#ffffff">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="domain — партия, расхождение, ячейка, размещение" style="text;html=1;fontFamily=Arial;fontSize=28;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="1560" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="Batch" value="Batch" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="90" width="730" height="357" as="geometry"/>
+        </mxCell>
+        <mxCell id="Batcha" value="- batchId: String&lt;br&gt;- deliveryItemId: String&lt;br&gt;- batchNumber: String&lt;br&gt;- expirationDate: LocalDate&lt;br&gt;- quantity: BigInteger" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="Batch">
+          <mxGeometry x="0" y="58" width="730" height="137" as="geometry"/>
+        </mxCell>
+        <mxCell id="Batchline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="Batch">
+          <mxGeometry x="0" y="195" width="730" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="Batchm" value="+ Batch(String, String, String, LocalDate, BigInteger)&lt;br&gt;+ getBatchId(): String&lt;br&gt;+ getDeliveryItemId(): String&lt;br&gt;+ getBatchNumber(): String&lt;br&gt;+ getExpirationDate(): LocalDate&lt;br&gt;+ getQuantity(): BigInteger" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="Batch">
+          <mxGeometry x="0" y="196" width="730" height="162" as="geometry"/>
+        </mxCell>
+        <mxCell id="StorageCell" value="StorageCell" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="90" width="730" height="432" as="geometry"/>
+        </mxCell>
+        <mxCell id="StorageCella" value="- cellId: String&lt;br&gt;- zone: String&lt;br&gt;- capacity: BigInteger&lt;br&gt;- availableCapacity: BigInteger&lt;br&gt;- storageConditions: String&lt;br&gt;- status: String" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="StorageCell">
+          <mxGeometry x="0" y="58" width="730" height="162" as="geometry"/>
+        </mxCell>
+        <mxCell id="StorageCellline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="StorageCell">
+          <mxGeometry x="0" y="220" width="730" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="StorageCellm" value="+ StorageCell(String, String, BigInteger, BigInteger, String, String)&lt;br&gt;+ getCellId(): String&lt;br&gt;+ getZone(): String&lt;br&gt;+ getCapacity(): BigInteger&lt;br&gt;+ getAvailableCapacity(): BigInteger&lt;br&gt;+ getStorageConditions(): String&lt;br&gt;+ getStatus(): String&lt;br&gt;+ occupy(BigInteger): void" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="StorageCell">
+          <mxGeometry x="0" y="221" width="730" height="212" as="geometry"/>
+        </mxCell>
+        <mxCell id="Discrepancy" value="Discrepancy" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="610" width="730" height="382" as="geometry"/>
+        </mxCell>
+        <mxCell id="Discrepancya" value="- discrepancyId: String&lt;br&gt;- deliveryItemId: String&lt;br&gt;- discrepancyType: String&lt;br&gt;- quantityDifference: BigInteger&lt;br&gt;- description: String" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="Discrepancy">
+          <mxGeometry x="0" y="58" width="730" height="137" as="geometry"/>
+        </mxCell>
+        <mxCell id="Discrepancyline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="Discrepancy">
+          <mxGeometry x="0" y="195" width="730" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="Discrepancym" value="+ Discrepancy(String, String, String, BigInteger, String)&lt;br&gt;+ getDiscrepancyId(): String&lt;br&gt;+ getDeliveryItemId(): String&lt;br&gt;+ getDiscrepancyType(): String&lt;br&gt;+ getQuantityDifference(): BigInteger&lt;br&gt;+ getDescription(): String&lt;br&gt;+ validateAgainst(DeliveryItem): void" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="Discrepancy">
+          <mxGeometry x="0" y="196" width="730" height="187" as="geometry"/>
+        </mxCell>
+        <mxCell id="Placement" value="Placement" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="610" width="730" height="357" as="geometry"/>
+        </mxCell>
+        <mxCell id="Placementa" value="- placementId: String&lt;br&gt;- batchId: String&lt;br&gt;- cellId: String&lt;br&gt;- quantity: BigInteger&lt;br&gt;- placementDate: LocalDate" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="Placement">
+          <mxGeometry x="0" y="58" width="730" height="137" as="geometry"/>
+        </mxCell>
+        <mxCell id="Placementline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="Placement">
+          <mxGeometry x="0" y="195" width="730" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="Placementm" value="+ Placement(String, String, String, BigInteger, LocalDate)&lt;br&gt;+ getPlacementId(): String&lt;br&gt;+ getBatchId(): String&lt;br&gt;+ getCellId(): String&lt;br&gt;+ getQuantity(): BigInteger&lt;br&gt;+ getPlacementDate(): LocalDate" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="Placement">
+          <mxGeometry x="0" y="196" width="730" height="162" as="geometry"/>
+        </mxCell>
+        <mxCell id="note" value="DeliveryItem 1 ↔ 0..* Batch; DeliveryItem 1 ↔ 0..* Discrepancy (лист 09). Batch.productId отсутствует: товар определяется через DeliveryItem." style="text;html=1;align=left;fontSize=20;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1100" width="1560" height="75" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page3" name="04 Контейнер и наследование">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1900" pageHeight="1450" background="#ffffff">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="domain — агрегация записей и поведение качественного расхождения" style="text;html=1;fontFamily=Arial;fontSize=28;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="1560" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="Warehouse" value="Warehouse" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="90" width="930" height="982" as="geometry"/>
+        </mxCell>
+        <mxCell id="Warehousea" value="- clients: List&amp;lt;Client&amp;gt;&lt;br&gt;- deliveries: List&amp;lt;Delivery&amp;gt;&lt;br&gt;- products: List&amp;lt;Product&amp;gt;&lt;br&gt;- deliveryItems: List&amp;lt;DeliveryItem&amp;gt;&lt;br&gt;- batches: List&amp;lt;Batch&amp;gt;&lt;br&gt;- discrepancies: List&amp;lt;Discrepancy&amp;gt;&lt;br&gt;- storageCells: List&amp;lt;StorageCell&amp;gt;&lt;br&gt;- placements: List&amp;lt;Placement&amp;gt;" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="Warehouse">
+          <mxGeometry x="0" y="58" width="930" height="212" as="geometry"/>
+        </mxCell>
+        <mxCell id="Warehouseline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="Warehouse">
+          <mxGeometry x="0" y="270" width="930" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="Warehousem" value="+ Warehouse()&lt;br&gt;+ getClients(): List&amp;lt;Client&amp;gt;&lt;br&gt;+ add(Client): void&lt;br&gt;+ findClient(String): Client&lt;br&gt;+ getDeliveries(): List&amp;lt;Delivery&amp;gt;&lt;br&gt;+ add(Delivery): void&lt;br&gt;+ findDelivery(String): Delivery&lt;br&gt;+ getProducts(): List&amp;lt;Product&amp;gt;&lt;br&gt;+ add(Product): void&lt;br&gt;+ findProduct(String): Product&lt;br&gt;+ getDeliveryItems(): List&amp;lt;DeliveryItem&amp;gt;&lt;br&gt;+ add(DeliveryItem): void&lt;br&gt;+ findDeliveryItem(String): DeliveryItem&lt;br&gt;+ getBatches(): List&amp;lt;Batch&amp;gt;&lt;br&gt;+ add(Batch): void&lt;br&gt;+ findBatch(String): Batch&lt;br&gt;+ getDiscrepancies(): List&amp;lt;Discrepancy&amp;gt;&lt;br&gt;+ add(Discrepancy): void&lt;br&gt;+ findDiscrepancy(String): Discrepancy&lt;br&gt;+ getStorageCells(): List&amp;lt;StorageCell&amp;gt;&lt;br&gt;+ add(StorageCell): void&lt;br&gt;+ findStorageCell(String): StorageCell&lt;br&gt;+ getPlacements(): List&amp;lt;Placement&amp;gt;&lt;br&gt;+ add(Placement): void&lt;br&gt;+ findPlacement(String): Placement&lt;br&gt;+ productsById(): Map&amp;lt;String, Product&amp;gt;&lt;br&gt;+ removeDiscrepancies(Set&amp;lt;String&amp;gt;): void&lt;br&gt;- find(List&amp;lt;T&amp;gt;, Function&amp;lt;T, String&amp;gt;, String): &amp;lt;T&amp;gt; T" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="Warehouse">
+          <mxGeometry x="0" y="271" width="930" height="712" as="geometry"/>
+        </mxCell>
+        <mxCell id="Discrepancy" value="«reference»&lt;br&gt;Discrepancy" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="100" width="600" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="QualityDiscrepancy" value="QualityDiscrepancy" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="400" width="600" height="152" as="geometry"/>
+        </mxCell>
+        <mxCell id="QualityDiscrepancya" value=" " style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="QualityDiscrepancy">
+          <mxGeometry x="0" y="58" width="600" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="QualityDiscrepancyline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="QualityDiscrepancy">
+          <mxGeometry x="0" y="90" width="600" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="QualityDiscrepancym" value="+ QualityDiscrepancy(String, String, String)&lt;br&gt;+ validateAgainst(DeliveryItem): void" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="QualityDiscrepancy">
+          <mxGeometry x="0" y="91" width="600" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="inh" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;endArrow=block;endFill=0;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="QualityDiscrepancy" target="Discrepancy">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="agg" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;startArrow=diamondThin;startFill=0;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=1;exitY=0.15;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="Warehouse" target="Discrepancy">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1040" y="237"/><mxPoint x="1040" y="132.5"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="aggsource" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="agg">
+          <mxGeometry x="-0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aggtarget" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="agg">
+          <mxGeometry x="0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Warehouse агрегирует восемь List: каждая запись входит в один текущий контейнер, сохраняет собственный ID и может быть загружена отдельно. Аналогичная агрегация — для остальных семи коллекций. QualityDiscrepancy переопределяет validateAgainst." style="text;html=1;align=left;fontSize=20;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1080" width="1560" height="75" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page4" name="05 Правила и алгоритмы">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1900" pageHeight="1450" background="#ffffff">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="rules и application — полиморфные проверки и два алгоритма" style="text;html=1;fontFamily=Arial;fontSize=28;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="1560" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="StorageRule" value="«interface»&lt;br&gt;StorageRule" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="100" width="650" height="127" as="geometry"/>
+        </mxCell>
+        <mxCell id="StorageRulea" value=" " style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="StorageRule">
+          <mxGeometry x="0" y="58" width="650" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="StorageRuleline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="StorageRule">
+          <mxGeometry x="0" y="90" width="650" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="StorageRulem" value="+ isSatisfied(Product, StorageCell): boolean" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="StorageRule">
+          <mxGeometry x="0" y="91" width="650" height="37" as="geometry"/>
+        </mxCell>
+        <mxCell id="ConditionsRule" value="ConditionsRule" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="400" width="700" height="152" as="geometry"/>
+        </mxCell>
+        <mxCell id="ConditionsRulea" value=" " style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="ConditionsRule">
+          <mxGeometry x="0" y="58" width="700" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="ConditionsRuleline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="ConditionsRule">
+          <mxGeometry x="0" y="90" width="700" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ConditionsRulem" value="+ ConditionsRule()&lt;br&gt;+ isSatisfied(Product, StorageCell): boolean" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="ConditionsRule">
+          <mxGeometry x="0" y="91" width="700" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="ZoneRule" value="ZoneRule" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="400" width="700" height="152" as="geometry"/>
+        </mxCell>
+        <mxCell id="ZoneRulea" value=" " style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="ZoneRule">
+          <mxGeometry x="0" y="58" width="700" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="ZoneRuleline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="ZoneRule">
+          <mxGeometry x="0" y="90" width="700" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ZoneRulem" value="+ ZoneRule()&lt;br&gt;+ isSatisfied(Product, StorageCell): boolean" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="ZoneRule">
+          <mxGeometry x="0" y="91" width="700" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="StorageSelector" value="StorageSelector" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="690" width="1600" height="182" as="geometry"/>
+        </mxCell>
+        <mxCell id="StorageSelectora" value="- conditionsRule: StorageRule&lt;br&gt;- zoneRule: StorageRule" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="StorageSelector">
+          <mxGeometry x="0" y="58" width="1600" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="StorageSelectorline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="StorageSelector">
+          <mxGeometry x="0" y="120" width="1600" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="StorageSelectorm" value="+ StorageSelector()&lt;br&gt;+ selectStorageCell(Product, BigInteger, List&amp;lt;StorageCell&amp;gt;): Optional&amp;lt;StorageCell&amp;gt;" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="StorageSelector">
+          <mxGeometry x="0" y="121" width="1600" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="DeliveryComparator" value="DeliveryComparator" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="990" width="1600" height="177" as="geometry"/>
+        </mxCell>
+        <mxCell id="DeliveryComparatora" value=" " style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="DeliveryComparator">
+          <mxGeometry x="0" y="58" width="1600" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="DeliveryComparatorline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="DeliveryComparator">
+          <mxGeometry x="0" y="90" width="1600" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="DeliveryComparatorm" value="+ DeliveryComparator()&lt;br&gt;+ compareDeliveryItems(List&amp;lt;DeliveryItem&amp;gt;, List&amp;lt;DeliveryItem&amp;gt;): List&amp;lt;Map&amp;lt;String, Object&amp;gt;&amp;gt;&lt;br&gt;- deviation(String, String, BigInteger): Map&amp;lt;String, Object&amp;gt;" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="DeliveryComparator">
+          <mxGeometry x="0" y="91" width="1600" height="87" as="geometry"/>
+        </mxCell>
+        <mxCell id="i1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;endArrow=block;endFill=0;dashed=1;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="ConditionsRule" target="StorageRule">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="450" y="320"/><mxPoint x="722.5" y="320"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="i2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;endArrow=block;endFill=0;dashed=1;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="ZoneRule" target="StorageRule">
+          <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1350" y="320"/><mxPoint x="1047.5" y="320"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="d1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="StorageSelector" target="StorageRule">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="1850" y="781.5"/><mxPoint x="1850" y="176"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="StorageSelector хранит два поля типа StorageRule и вызывает обе реализации. Один проход O(k), память O(1). Сопоставление — вложенные циклы O(n*m+n+m)." style="text;html=1;align=left;fontSize=20;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1260" width="1800" height="90" as="geometry"/>
+        </mxCell>
+      <mxCell id="d1source" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Arial;fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="d1"><mxGeometry x="-0.94" y="0" relative="1" as="geometry"><mxPoint x="12" y="-15" as="offset"/></mxGeometry></mxCell><mxCell id="d1target" value="2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontFamily=Arial;fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="d1"><mxGeometry x="0.97" y="0" relative="1" as="geometry"><mxPoint x="10" y="20" as="offset"/></mxGeometry></mxCell></root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page5" name="06 Сервис приёмки">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1900" pageHeight="1450" background="#ffffff">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="application — ReceivingService и операции процесса" style="text;html=1;fontFamily=Arial;fontSize=28;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="1560" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="ReceivingService" value="ReceivingService" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="90" width="1800" height="482" as="geometry"/>
+        </mxCell>
+        <mxCell id="ReceivingServicea" value="- data: Warehouse&lt;br&gt;- validator: IntegrityValidator&lt;br&gt;- comparator: DeliveryComparator&lt;br&gt;- selector: StorageSelector" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="ReceivingService">
+          <mxGeometry x="0" y="58" width="1800" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="ReceivingServiceline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="ReceivingService">
+          <mxGeometry x="0" y="170" width="1800" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ReceivingServicem" value="+ ReceivingService(Warehouse, IntegrityValidator)&lt;br&gt;+ deliveryItems(String): List&amp;lt;DeliveryItem&amp;gt;&lt;br&gt;- validateItems(List&amp;lt;DeliveryItem&amp;gt;, boolean, boolean): void&lt;br&gt;+ registerExpectedDelivery(String, LocalDate, List&amp;lt;DeliveryItem&amp;gt;): Delivery&lt;br&gt;+ recordActualReceipt(String, List&amp;lt;DeliveryItem&amp;gt;, LocalDate): List&amp;lt;String&amp;gt;&lt;br&gt;+ receiptDiscrepancies(String): List&amp;lt;Map&amp;lt;String, Object&amp;gt;&amp;gt;&lt;br&gt;+ registerDiscrepancies(String, List&amp;lt;Map&amp;lt;String, Object&amp;gt;&amp;gt;): List&amp;lt;Discrepancy&amp;gt;&lt;br&gt;+ acceptDelivery(String, Map&amp;lt;String, Batch&amp;gt;, boolean): List&amp;lt;Batch&amp;gt;&lt;br&gt;+ batchRemaining(String): BigInteger&lt;br&gt;+ selectForBatch(String): Optional&amp;lt;StorageCell&amp;gt;&lt;br&gt;+ registerPlacement(Placement, String): Placement&lt;br&gt;+ newId(List&amp;lt;T&amp;gt;, Function&amp;lt;T, String&amp;gt;, String): &amp;lt;T&amp;gt; String" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="ReceivingService">
+          <mxGeometry x="0" y="171" width="1800" height="312" as="geometry"/>
+        </mxCell>
+        <mxCell id="note" value="data: Warehouse; validator: IntegrityValidator; comparator: DeliveryComparator; selector: StorageSelector — по одному объекту. Зависимости и пакеты показаны на листе 01. newId — вспомогательный обобщённый метод." style="text;html=1;align=left;fontSize=20;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="20" y="607" width="1560" height="75" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page6" name="07 JSON и целостность">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1900" pageHeight="1450" background="#ffffff">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="infrastructure — загрузка, целостность и атомарное сохранение" style="text;html=1;fontFamily=Arial;fontSize=28;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="1560" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="JsonWarehouseRepository" value="JsonWarehouseRepository" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="90" width="1750" height="332" as="geometry"/>
+        </mxCell>
+        <mxCell id="JsonWarehouseRepositorya" value="- gson: Gson&lt;br&gt;- validator: IntegrityValidator" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="JsonWarehouseRepository">
+          <mxGeometry x="0" y="58" width="1750" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="JsonWarehouseRepositoryline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="JsonWarehouseRepository">
+          <mxGeometry x="0" y="120" width="1750" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="JsonWarehouseRepositorym" value="+ JsonWarehouseRepository()&lt;br&gt;+ getValidator(): IntegrityValidator&lt;br&gt;+ getGson(): Gson&lt;br&gt;+ decode(String): Warehouse&lt;br&gt;+ load(Path): Warehouse&lt;br&gt;+ copy(Warehouse): Warehouse&lt;br&gt;+ encode(Object): String&lt;br&gt;+ save(Warehouse, Path): void" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="JsonWarehouseRepository">
+          <mxGeometry x="0" y="121" width="1750" height="212" as="geometry"/>
+        </mxCell>
+        <mxCell id="IntegrityValidator" value="IntegrityValidator" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="482" width="1750" height="332" as="geometry"/>
+        </mxCell>
+        <mxCell id="IntegrityValidatora" value="- gson: Gson&lt;br&gt;- fields: Map&amp;lt;String, List&amp;lt;String&amp;gt;&amp;gt;" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="IntegrityValidator">
+          <mxGeometry x="0" y="58" width="1750" height="62" as="geometry"/>
+        </mxCell>
+        <mxCell id="IntegrityValidatorline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="IntegrityValidator">
+          <mxGeometry x="0" y="120" width="1750" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="IntegrityValidatorm" value="+ IntegrityValidator(Gson)&lt;br&gt;+ validateDocument(JsonObject): void&lt;br&gt;+ validate(Warehouse): void&lt;br&gt;- validateState(Warehouse, Delivery): void&lt;br&gt;+ parseDate(String): LocalDate&lt;br&gt;+ require(boolean, String): void&lt;br&gt;- checkConditions(String): void&lt;br&gt;- sum(List&amp;lt;T&amp;gt;, Predicate&amp;lt;T&amp;gt;, Function&amp;lt;T, BigInteger&amp;gt;): &amp;lt;T&amp;gt; BigInteger" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="IntegrityValidator">
+          <mxGeometry x="0" y="121" width="1750" height="212" as="geometry"/>
+        </mxCell>
+        <mxCell id="note" value="Репозиторий хранит один Gson и один IntegrityValidator. Проверка исходной схемы предшествует связыванию объектов; производные величины сверяются до/после изменения и перед записью." style="text;html=1;align=left;fontSize=20;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="20" y="844" width="1560" height="75" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page7" name="08 Консоль">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1900" pageHeight="1450" background="#ffffff">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="cli — ConsoleApp" style="text;html=1;fontFamily=Arial;fontSize=28;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="1560" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="ConsoleApp" value="ConsoleApp" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="90" width="1600" height="482" as="geometry"/>
+        </mxCell>
+        <mxCell id="ConsoleAppa" value="- repository: JsonWarehouseRepository&lt;br&gt;- input: BufferedReader&lt;br&gt;- output: PrintStream" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="ConsoleApp">
+          <mxGeometry x="0" y="58" width="1600" height="87" as="geometry"/>
+        </mxCell>
+        <mxCell id="ConsoleAppline" value="" style="shape=line;direction=east;strokeWidth=1;strokeColor=#444444;fillColor=none;" vertex="1" parent="ConsoleApp">
+          <mxGeometry x="0" y="145" width="1600" height="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ConsoleAppm" value="+ ConsoleApp(JsonWarehouseRepository)&lt;br&gt;&lt;u&gt;+ main(String[]): void&lt;/u&gt;&lt;br&gt;+ run(Path): int&lt;br&gt;- inputExpected(Warehouse, ReceivingService): Object&lt;br&gt;- inputActual(ReceivingService): Object&lt;br&gt;- inputDiscrepancies(Warehouse, ReceivingService): Object&lt;br&gt;- chooseBatch(Warehouse): String&lt;br&gt;- inputPlacement(Warehouse, ReceivingService): Object&lt;br&gt;- readItems(boolean): List&amp;lt;DeliveryItem&amp;gt;&lt;br&gt;- ask(String): String&lt;br&gt;- confirm(String): boolean&lt;br&gt;- readDate(String): LocalDate&lt;br&gt;- show(Object): void" style="text;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=5;whiteSpace=wrap;fontFamily=Arial;fontSize=20;" vertex="1" parent="ConsoleApp">
+          <mxGeometry x="0" y="146" width="1600" height="337" as="geometry"/>
+        </mxCell>
+        <mxCell id="note" value="Поля repository, input, output закрыты. main — единственная статическая точка запуска; работа выполняется экземпляром. Кандидат состояния сохраняется после явного подтверждения пользователя." style="text;html=1;align=left;fontSize=20;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="20" y="607" width="1560" height="75" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page8" name="09 Ассоциации сущностей">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1900" pageHeight="1450" background="#ffffff">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="domain — ассоциации восьми сущностей с кратностью" style="text;html=1;fontFamily=Arial;fontSize=28;fontStyle=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="1560" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="Client" value="«reference»&lt;br&gt;Client" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="150" width="350" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="Delivery" value="«reference»&lt;br&gt;Delivery" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="420" width="350" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="Product" value="«reference»&lt;br&gt;Product" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="150" width="350" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="DeliveryItem" value="«reference»&lt;br&gt;DeliveryItem" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="420" width="350" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="Batch" value="«reference»&lt;br&gt;Batch" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="420" width="350" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="StorageCell" value="«reference»&lt;br&gt;StorageCell" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="780" width="350" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="Discrepancy" value="«reference»&lt;br&gt;Discrepancy" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="780" width="350" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="Placement" value="«reference»&lt;br&gt;Placement" style="swimlane;html=1;startSize=58;horizontal=1;rounded=0;fillColor=#ffffff;swimlaneFillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=23;fontStyle=1;align=center;;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="780" width="350" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="ClientDelivery" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="Client" target="Delivery">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ClientDeliverysource" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="ClientDelivery">
+          <mxGeometry x="-0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ClientDeliverytarget" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="ClientDelivery">
+          <mxGeometry x="0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DeliveryDeliveryItem" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="Delivery" target="DeliveryItem">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="DeliveryDeliveryItemsource" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="DeliveryDeliveryItem">
+          <mxGeometry x="-0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DeliveryDeliveryItemtarget" value="1..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="DeliveryDeliveryItem">
+          <mxGeometry x="0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ProductDeliveryItem" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="Product" target="DeliveryItem">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ProductDeliveryItemsource" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="ProductDeliveryItem">
+          <mxGeometry x="-0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ProductDeliveryItemtarget" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="ProductDeliveryItem">
+          <mxGeometry x="0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DeliveryItemBatch" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="DeliveryItem" target="Batch">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="DeliveryItemBatchsource" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="DeliveryItemBatch">
+          <mxGeometry x="-0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DeliveryItemBatchtarget" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="DeliveryItemBatch">
+          <mxGeometry x="0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DeliveryItemDiscrepancy" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="DeliveryItem" target="Discrepancy">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="DeliveryItemDiscrepancysource" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="DeliveryItemDiscrepancy">
+          <mxGeometry x="-0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DeliveryItemDiscrepancytarget" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="DeliveryItemDiscrepancy">
+          <mxGeometry x="0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BatchPlacement" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="Batch" target="Placement">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="BatchPlacementsource" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="BatchPlacement">
+          <mxGeometry x="-0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BatchPlacementtarget" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="BatchPlacement">
+          <mxGeometry x="0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="StorageCellPlacement" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#333333;fontSize=20;fontFamily=Arial;labelBackgroundColor=#ffffff;endArrow=none;;strokeWidth=1.3;endSize=10;startSize=10;labelBackgroundColor=#ffffff;;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=20;" edge="1" parent="1" source="StorageCell" target="Placement">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points"><mxPoint x="195" y="950"/><mxPoint x="1415" y="950"/></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="StorageCellPlacementsource" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="StorageCellPlacement">
+          <mxGeometry x="-0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="StorageCellPlacementtarget" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="StorageCellPlacement">
+          <mxGeometry x="0.75" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note" value="Кратности указаны на концах ассоциаций. Каждая дочерняя запись относится ровно к одному родителю; связи хранятся через ID. Product–Batch выводится через DeliveryItem." style="text;html=1;align=left;fontSize=20;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1070" width="1700" height="110" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
