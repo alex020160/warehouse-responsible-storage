@@ -110,6 +110,22 @@ cp data/warehouse.json data/warehouse.backup.json
 даты, типы расхождений и полное состояние; сообщения ошибок не обязаны совпадать дословно.
 Описание фактических запусков находится в `verification/verification.md`.
 
+Проверки исправлений по рецензии: `verification/review-fixes.md`.
+Для проверки защиты сверки от неполного вывода выполните из корня репозитория:
+
+```powershell
+py -3.13 docs/verify_comparison_guard.py . "$env:JAVA_HOME/bin/java.exe"
+```
+
+```sh
+python3 docs/verify_comparison_guard.py . "$JAVA_HOME/bin/java"
+```
+
+Стенд запускает настоящую Java, затем намеренно подменяет её выходной JSON:
+полный массив принимается, укороченный, пустой, расширенный массив и объект
+вместо массива отклоняются. Все временные данные создаются вне исходного JSON.
+
+
 ## Целостность и ООП
 
 available_capacity = capacity − сумма Placement.quantity ячейки.

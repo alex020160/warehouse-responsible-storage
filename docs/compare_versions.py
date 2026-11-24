@@ -79,11 +79,17 @@ def execute(r):
         except (ValueError,KeyError,TypeError):results.append(dict(ok=False))
     return dict(results=results,state=d)
 OUT.mkdir(parents=True,exist_ok=True)
+(OUT/'parity-results.json').unlink(missing_ok=True)
 (OUT/'parity-input.json').write_text(json.dumps([r for n,r in cases],ensure_ascii=False),encoding='utf-8')
 cp=str(ROOT/'src/java/build/classes')+os.pathsep+str(ROOT/'src/java/lib/gson-2.13.2.jar')
 subprocess.run([str(JAVA),'-cp',cp,'ru.mirea.warehouse.VerificationMain',str(OUT/'parity-input.json'),str(OUT/'parity-java.json')],check=True)
 java=json.loads((OUT/'parity-java.json').read_text(encoding='utf-8'))
 python=[execute(r) for n,r in cases]
+if not isinstance(java,list):
+    raise SystemExit(f'Неверный формат результатов Java: ожидается массив, получен {type(java).__name__}.')
+expected_count=len(cases)
+if expected_count==0 or len(python)!=expected_count or len(java)!=expected_count:
+    raise SystemExit(f'Неполный набор результатов: ожидается {expected_count}; Python={len(python)}; Java={len(java)}.')
 def same(a,b):
     if type(a) is not type(b): return False
     if isinstance(a,dict): return a.keys()==b.keys() and all(same(a[k],b[k]) for k in a)
@@ -95,5 +101,6 @@ for (name,r),a,b in zip(cases,python,java):
     if not ok:print('Python:',json.dumps(a,ensure_ascii=False));print('Java:',json.dumps(b,ensure_ascii=False))
 (OUT/'parity-python.json').write_text(json.dumps(python,ensure_ascii=False,indent=2),encoding='utf-8')
 (OUT/'parity-results.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
-assert all(x['passed'] for x in report)
+if not all(x['passed'] for x in report):
+    raise SystemExit('Результаты Python и Java различаются.')
 print(f'{len(report)}/{len(report)} совпали')
